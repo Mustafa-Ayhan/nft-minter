@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Vuetify 3</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="./moralis.js"></script>
+  <script type="module" src="./nft-minter_abi.js"></script>
+  <script type="module" src="./treasury_abi.js"></script>
+  <script type="module" src="./liquidity_abi.js"></script>
+  <script language="javascript" type="text/javascript" src="./web3.min.js"></script>
+  <script>
+    var web3js = "";
+    var minterContract = "";
+    var liquidityContract = "";
+    var treasuryContract = "";
+
+    function connectMintContract() {
+      var contractAddress = "0x27f7f7BAC0E8467Db2bCaD94100A515b1f07EA4b";
+      minterContract = new web3js.eth.Contract(minterABI, contractAddress);
+    }
+
+    function connectLiquidityContract() {
+      var liquidityAddress = "0x721a999d2Af0bAC7Fc0fFEb24385F25887539A5D";
+      liquidityContract = new web3js.eth.Contract(liquidityABI, liquidityAddress);
+    }
+
+    function connectTreasuryContract() {
+      var treasuryAddress = "0xCae3706426B37361f60C9de1315f249e75647690";
+      treasuryContract = new web3js.eth.Contract(treasuryABI, treasuryAddress);
+    }
+
+    window.addEventListener('load', function () {
+
+      // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+      if (typeof web3 !== 'undefined') {
+        // Use Mist/MetaMask's provider
+        web3js = new Web3(web3.currentProvider);
+      }
+
+      connectMintContract();
+      connectLiquidityContract();
+      connectTreasuryContract();
+    })
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
