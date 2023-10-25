@@ -64,7 +64,7 @@ pnpm run build
 6. Mint işlemi tamamlandıktan sonra OpenSea üzerinden mint edilmiş içerik kontrol edilir.
 (Dosya içeriğini göstermekle ilgili bir sorun yaşadım, bu kısımda sorunu inceleyecek daha fazla vaktim olmadı..)
 7. Gönderilen miktar ise liquidity ve treasury cüzdanlarına yollanarak, bu cüzdanlar üzerindeki toplanmış miktar alt kısımdaki butonlar aracılığı ile kontrol edilebilir.
-Senaryo akışının videosu için şu dosyayı kullanabilirsiniz.
+Senaryo akışının videosu için şu dosyayı(https://github.com/Mustafa-Ayhan/nft-minter/blob/main/minter.flv) kullanabilirsiniz.
 
 ### Açıklamalar
 3. sorunun cevabı için:
