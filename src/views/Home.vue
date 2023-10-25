@@ -56,6 +56,29 @@
             </v-card>
           </v-col>
         </v-row>
+
+        <v-row class="d-flex justify-center">
+          <v-col cols="auto">
+            <v-card class="mx-auto" width="800">
+              <v-card-title>Balance</v-card-title>
+
+              <v-card-text>
+                <v-row class="align-center justify-center">
+                  <v-col cols="6" class="align-center justify-center">
+                    <v-btn text="Get Treasury Balance" color="success" size="x-large" block
+                      @click="getTreasuryBalance"></v-btn>
+                    {{ treasuryBalance }}
+                  </v-col>
+                  <v-col cols="6" class="align-center justify-center">
+                    <v-btn text="Get Liquidity Balance" color="warning" size="x-large" block
+                      @click="getLiquidityBalance"></v-btn>
+                    {{ liquidityBalance }}
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-container>
     </v-responsive>
   </v-container>
@@ -71,6 +94,8 @@ let isConnectionVisible = ref(window.ethereum?.selectedAddress ? false : true);
 let imageFile = ref("");
 let file: any = ref();
 let amount = ref(0);
+let treasuryBalance = ref("0");
+let liquidityBalance = ref("0");
 
 async function connectWallet() {
   if (typeof window.ethereum !== "undefined") {
@@ -146,6 +171,14 @@ async function uploadToIpfs(abiContent: Array<{ path: string, content: string }>
   return await Moralis.EvmApi.ipfs.uploadFolder({
     abi: abiContent
   })
+}
+
+async function getTreasuryBalance() {
+  treasuryBalance.value = await treasuryContract.methods.getBalance().call();
+}
+
+async function getLiquidityBalance() {
+  liquidityBalance.value = await liquidityContract.methods.getBalance().call();
 }
 
 </script>
